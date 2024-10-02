@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png"
+          href="data:image/x-icon;base64,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xv///////////////////////////4GBgf8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP+AgID////////////////////////////ExMT/Dg4O/wAAAP8AAAD/AAAA/wAAAP8ODg7/xMTE////////////////////////////gICA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/4CAgP///////////////////////////8TExP8ODg7/AAAA/wAAAP8AAAD/AAAA/w4ODv/ExMT///////////////////////////+AgID/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/gICA////////////////////////////xMTE/w4ODv8AAAD/AAAA/wAAAP8AAAD/Dg4O/8TExP///////////////////////////4CAgP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP+AgID////////////////////////////ExMT/Dg4O/wAAAP8AAAD/AAAA/wAAAP8ODg7/xcXF////////////////////////////gICA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/zk5Of+AgID/gICA/4CAgP+AgID/gYGB/1tbW/8FBQX/AAAA/wAAAP8AAAD/AAAA/wUFBf9cXFz/gYGB/4CAgP+AgID/gICA/4CAgP85OTn/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA9QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAPUAAADJAAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAyQAAAG0AAAD4AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAPgAAABuAAAAEQAAAKgAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAABIAAAAAAAAAHwAAAKgAAAD4AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA+AAAAKgAAAAfAAAAAAAAAAAAAAAAAAAAEgAAAG4AAADJAAAA9QAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA9QAAAMkAAABtAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=">
+    <title>OKX Balance Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /*balance*/
+        #balance-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .balance-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #e6e6e6;
+            transition: background-color 0.3s ease;
+        }
+
+        .balance-item:hover {
+            background-color: #f0f8ff;
+        }
+
+        .balance-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .balance-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .currency-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .balance-amount {
+            display: flex;
+            color: #000000;
+            font-size: 16px;
+            /*font-weight: bold;*/
+            white-space: nowrap; /* 防止文本换行 */
+            text-align: right; /* 确保金额靠右显示 */
+
+        }
+
+        .balance-usd {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .profit-positive {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .profit-negative {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .no-profit {
+            color: #888;
+        }
+
+        .header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+
+        /*position*/
+        #position-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .position-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contract-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .leverage-long {
+            color: green;
+            font-weight: bold;
+        }
+
+        .leverage-short {
+            color: #f30000;
+            font-weight: bold;
+        }
+
+
+        .position-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .position-item {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+        }
+
+        .position-item .label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .position-item .value {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        @keyframes green-color-flash {
+            0% {
+                color: #008000;
+                text-shadow: 0 0 3px #0080003F, 0 0 6px #0080003F, 0 0 9px #0080003F, 0 0 12px #0080003F;
+            }
+            100% {
+                color: #35df35;
+                text-shadow: 0 0 3px #35df353F, 0 0 6px #35df353F, 0 0 9px #35df353F, 0 0 12px #35df353F;
+            }
+        }
+
+        @keyframes red-color-flash {
+            0% {
+                color: #CC0000;
+                text-shadow: 0 0 3px #CC00004F, 0 0 6px #CC00004F, 0 0 9px #CC00004F, 0 0 12px #CC00004F;
+            }
+            100% {
+                color: #FF2E2E;
+                text-shadow: 0 0 3px #FF2E2E4F, 0 0 6px #FF2E2E4F, 0 0 9px #FF2E2E4F, 0 0 12px #FF2E2E4F;
+            }
+        }
+
+        .upl-positive {
+            animation: green-color-flash 1s infinite alternate;
+        }
+
+        .upl-negative {
+            animation: red-color-flash 1s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+
+<div id="balance-container">
+    <div class="header">资产分布</div>
+    <div class="search-bar">
+        <label for="search-bar"><input type="text" placeholder="搜索币种" id="search-bar" value="USDT"/></label>
+    </div>
+    <div id="balance-list">
+    </div>
+</div>
+
+
+<div id="position-container">
+    <div class="header">仓位情况</div>
+    <div id="position-list">
+    </div>
+</div>
+
+<script>
+    class OKX {
+        constructor(apikey, secretkey, passphrase) {
+            this.apikey = apikey;
+            this.secretkey = secretkey;
+            this.passphrase = passphrase;
+            this.simulated = true;
+            this.ws = new OkxWebsocket(this);
+            this.rest = new OkxRest(this);
+        }
+
+        asSimulated(value) {
+            this.simulated = value;
+            return this;
+        }
+    }
+
+    class OkxRest {
+
+        static url = 'https://www.okx.com';
+
+
+        constructor(okx) {
+            this.okx = okx;
+
+            this.trade = new Trade(this);
+            this.market = new Market(this);
+            this.asset = new Asset(this);
+            this.account = new Account(this);
+            this.public = new Public(this);
+        }
+
+
+        static getTs() {
+            return new Date().toISOString().slice(0, -1) + 'Z';
+        }
+
+        async getSign(timestamp, method, requestPath, body) {
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey(
+                'raw',
+                encoder.encode(this.okx.secretkey),
+                {name: 'HMAC', hash: 'SHA-256'},
+                false,
+                ['sign']
+            );
+            const data = encoder.encode(`${timestamp}${method}${requestPath}${body}`);
+            const signature = await crypto.subtle.sign('HMAC', key, data);
+            return btoa(String.fromCharCode(...new Uint8Array(signature)));
+        }
+
+        async getHeader(method, requestPath, signInfo) {
+            const ts = OkxRest.getTs();
+            const sign = await this.getSign(ts, method, requestPath, signInfo);
+            return {
+                'accept': 'application/json',
+                'Content-Type': 'application/json',
+                'x-simulated-trading': `${this.okx.simulated ? 1 : 0}`,
+                'OK-ACCESS-KEY': this.okx.apikey,
+                'OK-ACCESS-SIGN': sign,
+                'OK-ACCESS-TIMESTAMP': ts,
+                'OK-ACCESS-PASSPHRASE': this.okx.passphrase,
+            };
+        }
+
+        async _requestBuildSend(info, method, requestPath) {
+            let params = null;
+            let body = null;
+            let url = `${OkxRest.url}${requestPath}`;
+            let signInfo = null;
+            if (method === 'GET') {
+                const searchParams = new URLSearchParams(info).toString();
+                signInfo = params = `?${searchParams}`;
+                url += params;
+            } else if (method === 'POST') {
+                body = info;
+                signInfo = JSON.stringify(info)
+            }
+
+            const headers = await this.getHeader(method, requestPath, signInfo || '');
+
+            const response = await fetch(url, {
+                method: method,
+                headers: headers,
+                body: method === 'POST' ? JSON.stringify(body) : undefined,
+                mode: 'cors',  // 跨域请求时需要指定
+                cache: 'no-cache'
+            });
+
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(`Request failed: ${errorMessage}`);
+            }
+
+            return await response.json();
+        }
+    }
+
+    // 交易类
+    class Trade {
+        constructor(okx) {
+            this.okx = okx;
+        }
+
+        async _requestSelectDestination(action, info) {
+            const operation = this.operations[action];
+            const [method, requestPath] = operation;
+            return await this.okx._requestBuildSend(info, method, requestPath);
+        }
+
+        async simpleOrder(instId, price, size) {
+            const action = '下单';
+            const info = {
+                'instId': instId,
+                'tdMode': 'cash',
+                'side': 'buy',
+                'ordType': 'limit',
+                'px': price,  // 限价
+                'sz': size  // 购币个数
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async order(info) {
+            const action = '下单';
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async batchOrders(infos) {
+            const action = '批量下单';
+            return await this._requestSelectDestination(action, infos);
+        }
+
+        async queryOrder(instId, ordId) {
+            const action = '获取订单信息';
+            const info = {
+                'instId': instId,
+                'ordId': ordId
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async cancelOrder(instId, ordId) {
+            const action = '取消订单';
+            const info = {
+                'instId': instId,
+                'ordId': ordId
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async cancelBatchOrders(infos) {
+            const action = '批量撤单';
+            return await this._requestSelectDestination(action, infos);
+        }
+
+        async amendOrder(instId, ordId, newSz, newPx) {
+            const action = '改单';
+            const info = {
+                'instId': instId,
+                'ordId': ordId,
+                'newSz': newSz,
+                'newPx': newPx
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async amendBatchOrders(infos) {
+            const action = '批量修改订单';
+            return await this._requestSelectDestination(action, infos);
+        }
+
+        operations = {
+            '下单': ['POST', '/api/v5/trade/order'],
+            '批量下单': ['POST', '/api/v5/trade/batch-orders'],
+            '获取订单信息': ['GET', '/api/v5/trade/order'],
+            '取消订单': ['POST', '/api/v5/trade/cancel-order'],
+            '批量撤单': ['POST', '/api/v5/trade/cancel-batch-orders'],
+            '改单': ['POST', '/api/v5/trade/amend-order'],
+            '批量修改订单': ['POST', '/api/v5/trade/amend-batch-orders']
+        };
+    }
+
+    // 市场行情类
+    class Market {
+        constructor(okx) {
+            this.okx = okx;
+        }
+
+        async _requestSelectDestination(action, info) {
+            const operation = this.operations[action];
+            const [method, requestPath] = operation;
+            return await this.okx._requestBuildSend(info, method, requestPath);
+        }
+
+        async ticker(instId) {
+            const action = '获取单个产品行情信息';
+            const info = {
+                'instId': instId
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async getTickerPx(instId) {
+            const tickerData = await this.ticker(instId);
+            return parseFloat(tickerData.data[0].last);
+        }
+
+        operations = {
+            '获取单个产品行情信息': ['GET', '/api/v5/market/ticker'],
+            '获取交易产品K线数据': ['GET', '/api/v5/market/candles'],
+        };
+    }
+
+    // 资产类
+    class Asset {
+        constructor(okx) {
+            this.okx = okx;
+        }
+
+        async _requestSelectDestination(action, info) {
+            const operation = this.operations[action];
+            const [method, requestPath] = operation;
+            return await this.okx._requestBuildSend(info, method, requestPath);
+        }
+
+        async getAssetValuation(currency) {
+            const action = '获取账户资产估值';
+            const info = {
+                'ccy': currency
+            };
+            const response = await this._requestSelectDestination(action, info);
+            const data = response.data[0];
+            const details = Object.entries(data.details)
+                .map(([key, value]) => `${key}: ${parseFloat(value).toFixed(2)} ${currency}`)
+                .join('\n');
+            const total = parseFloat(data.totalBal);
+            return {details, total};
+        }
+
+        operations = {
+            '获取账户资产估值': ['GET', '/api/v5/asset/asset-valuation']
+        };
+    }
+
+    // 账户类
+    class Account {
+        constructor(okx) {
+            this.okx = okx;
+        }
+
+        async _requestSelectDestination(action, info) {
+            const operation = this.operations[action];
+            const [method, requestPath] = operation;
+            return await this.okx._requestBuildSend(info, method, requestPath);
+        }
+
+        async balance(currency = '') {
+            const action = '查看账户余额';
+            const info = {
+                'ccy': currency
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async positions(instType = 'SWAP', instId = '', posId = '') {
+            const action = '查看持仓信息';
+            const info = {
+                'instType': instType,
+                'instId': instId,
+                'posId': posId
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+
+        operations = {
+            '查看账户余额': ['GET', '/api/v5/account/balance'],
+            '查看持仓信息': ['GET', '/api/v5/account/positions']
+        };
+    }
+
+    class Public {
+        constructor(okx) {
+            this.okx = okx;
+        }
+
+        async _requestSelectDestination(action, info) {
+            const operation = this.operations[action];
+            const [method, requestPath] = operation;
+            return await this.okx._requestBuildSend(info, method, requestPath);
+        }
+
+
+        operations = {
+            '获取交易产品基础信息': ['GET', '/api/v5/public/instruments'],
+        };
+
+        async instrument(instType, instId) {
+            const action = '获取交易产品基础信息';
+
+            const info = {
+                'instType': instType,
+                'instId': instId
+            };
+            return await this._requestSelectDestination(action, info);
+        }
+
+        async getInstruments(instType, instId) {
+            return await this.instrument(instType, instId);
+
+
+        }
+    }
+
+    class OkxWebsocket {
+        constructor(okx) {
+            this.okx = okx;
+
+            this.heartbeatSendInterval = 25000;
+            this.heartbeatReceiveInterval = 5000;
+            this.pongTimeout = 2000;
+            this.heartbeatSendTimer = null;
+            this.heartbeatReceiveTimer = null;
+            this.pongTimer = null;
+
+            this.subscriptions = {};
+            this.priChannel = ['account', 'positions'];
+            this.pubChannel = ['instruments'];
+            this.channelPath = {};
+
+            this.wsDomain = `wss://ws${this.okx.simulated ? 'pap' : ''}.okx.com:8443`;
+            this.wsPriUrl = `${this.wsDomain}/ws/v5/private`;
+            this.wsPubUrl = `${this.wsDomain}/ws/v5/public`;
+            this.wsPri = null;
+            this.wsPub = null;
+
+        }
+
+
+        async _generateSign(timestamp, method, requestPath) {
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey(
+                "raw",
+                encoder.encode(this.okx.secretkey),
+                {name: "HMAC", hash: "SHA-256"},
+                false,
+                ["sign"]
+            );
+
+            const data = encoder.encode(`${timestamp}${method}${requestPath}`);
+            const signature = await crypto.subtle.sign("HMAC", key, data);
+            return btoa(String.fromCharCode(...new Uint8Array(signature)));
+        }
+
+        async wsLogin(ws) {
+            const timestamp = '' + Date.now() / 1000;
+            const sign = await this._generateSign(timestamp, "GET", "/users/self/verify");
+
+            const loginMessage = JSON.stringify({
+                op: "login",
+                args: [
+                    {
+                        apiKey: this.okx.apikey,
+                        passphrase: this.okx.passphrase,
+                        timestamp: timestamp,
+                        sign: sign
+                    }
+                ]
+            });
+
+            ws.send(loginMessage);
+        }
+
+        /**
+         * 重连
+         * */
+        reconnect() {
+            console.log('reconnecting...');
+            this.clearTimers();
+            const promise = this.initWebSocket();
+            promise.then((result) => {
+                console.log(result);
+
+                Object.values(this.subscriptions).forEach(({arg, callback}) => {
+                    this.subscribe(arg, callback);
+                    console.log('resubscribing...', arg);
+                })
+            })
+        }
+
+
+        initWebSocket() {
+            const connectPrivateChannel = () => {
+                return new Promise((resolve, reject) => {
+                    this.wsPri = new WebSocket(this.wsPriUrl);
+                    for (let channel of this.priChannel) {
+                        this.channelPath[channel] = this.wsPri;
+                    }
+
+                    this.wsPri.onopen = () => {
+                        console.log("WebSocket connection opened");
+                        this.wsLogin(this.wsPri).then();
+                    };
+                    this.wsPri.onmessage = (event) => {
+                        this.restartHeartbeatReceiveTimer();
+                        this.onMessage(event, resolve, reject);
+                    };
+
+                    this.wsPri.onclose = (event) => {
+                        console.log("WebSocket connection closed", event);
+                        this.reconnect();
+                    };
+
+                    this.wsPri.onerror = (error) => {
+                        console.error("WebSocket error:", error);
+                        reject(error);
+                    };
+                });
+            }
+            const connectPublicChannel = () => {
+                return new Promise((resolve, reject) => {
+                    this.wsPub = new WebSocket(this.wsPubUrl);
+                    for (let channel of this.pubChannel) {
+                        this.channelPath[channel] = this.wsPub;
+                    }
+
+                    this.wsPub.onopen = () => {
+                        console.log("WebSocket connection opened");
+                        this.wsLogin(this.wsPub).then();
+                    };
+                    this.wsPub.onmessage = (event) => {
+                        this.restartHeartbeatReceiveTimer();
+                        this.onMessage(event, resolve, reject);
+                    };
+
+                    this.wsPub.onclose = (event) => {
+                        console.log("WebSocket connection closed", event);
+                        this.reconnect();
+                    };
+
+                    this.wsPub.onerror = (error) => {
+                        console.error("WebSocket error:", error);
+                        reject(error);
+                    };
+
+                })
+            }
+            return Promise.all([connectPrivateChannel(), connectPublicChannel()])
+                .then((results) => {
+                    this.startHeartbeatSendTimer();
+                    return results;
+                })
+                .catch((error) => {
+                    console.error('Error in WebSocket connection', error);
+                    throw error;
+                });
+        }
+
+
+        onMessage(event, resolve, reject) {
+            switch (event.data) {
+                case "pong": {
+                    console.log("pong!");
+                    clearTimeout(this.pongTimer);
+                    break;
+                }
+                default: {
+                    this.onEventData(event, resolve, reject);
+                }
+            }
+        }
+
+        onEventData(event, resolve, reject) {
+            const eventData = JSON.parse(event.data);
+            console.log("onEventData:", eventData)
+            const {
+                event: eventType = "channel",
+                channel = undefined,
+                connCount = undefined,
+                connId = undefined,
+                arg = undefined,
+                data = undefined,
+                code = undefined
+            } = eventData;
+
+            switch (eventType) {
+                case 'login': {
+                    switch (code) {
+                        case '0':
+                            resolve('Login successful');
+                            break;
+                        default:
+                            reject('Login fail')
+                    }
+                    break;
+                }
+                case 'subscribe': {
+                    console.log("event:subscribe:", arg.channel);
+                    break
+                }
+                case 'channel-conn-count': {
+                    console.log("event:channel-conn-count:", channel, connCount, connId);
+                    break
+                }
+                case "channel":
+                    console.log("event:channel:", arg.channel, data);
+                    this.subscriptions[arg.channel].callback(data);
+                    break
+                default:
+                    console.log(`Unhandled event type: ${eventType}`);
+            }
+
+        }
+
+        /**
+         * 订阅
+         * */
+        subscribe(arg, callback) {
+            this.subscriptions[arg.channel] = {arg, callback}; // 保存订阅信息
+
+            const subscribeMessage = JSON.stringify({
+                op: "subscribe",
+                args: [arg],
+            });
+            console.log("subscribeMessage:", this.channelPath[arg.channel]);
+            this.channelPath[arg.channel].send(subscribeMessage);
+        }
+
+        /**
+         * 维持心跳
+         * */
+        startHeartbeatSendTimer() {
+            console.log('start heartbeat send timer...');
+
+            this.heartbeatSendTimer = setInterval(() => {
+                console.log('heartbeat send, ping...');
+                this.wsPri.send('ping');
+                this.wsPub.send('ping');
+                this.startPongTimer();
+            }, this.heartbeatSendInterval);
+        }
+
+        /**
+         * 服务器无消息超时心跳
+         * */
+        restartHeartbeatReceiveTimer() {
+            clearTimeout(this.heartbeatReceiveTimer); // 重置定时器
+            this.heartbeatReceiveTimer = setTimeout(() => {
+                console.log('heartbeat receive timeout, ping...');
+                this.wsPri.send('ping');
+                this.wsPub.send('ping');
+                this.startPongTimer();
+            }, this.heartbeatReceiveInterval);
+        }
+
+        startPongTimer() {
+            this.pongTimer = setTimeout(() => {
+                console.error('pong timeout, reconnect');
+                if (this.wsPub && this.wsPri && this.wsPri.readyState === WebSocket.OPEN) {
+                    this.wsPri.close();
+                    this.wsPub.close();
+                }
+            }, this.pongTimeout);
+        }
+
+        clearTimers() {
+            clearTimeout(this.heartbeatSendTimer);
+            clearTimeout(this.heartbeatReceiveTimer);
+            clearTimeout(this.pongTimer);
+        }
+    }
+
+    function getIcon(coinName) {
+        return `https://static.coinall.ltd/cdn/oksupport/asset/currency/icon/${coinName.toLowerCase()}.png`
+    }
+
+    function filterBalances() {
+        const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+        const balanceItems = document.querySelectorAll('.balance-item');
+
+        balanceItems.forEach(item => {
+            const currencyName = item.querySelector('.currency-name').innerText.toLowerCase();
+            if (searchTerm === '' || currencyName.includes(searchTerm)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    function SetSearchBar() {
+        document.getElementById('search-bar').addEventListener('input', filterBalances);
+    }
+
+    function genValue(position, expression) {
+        try {
+            const keys = Object.keys(position);
+            const values = Object.values(position);
+            const calcFunction = new Function(...keys, `return ${expression};`);
+            return calcFunction(...values);
+        } catch (error) {
+            console.error(`Error evaluating expression "${expression}":`, error);
+            return 'N/A';
+        }
+    }
+
+    async function displayBalances(balanceData) {
+        const balanceContainer = document.getElementById('balance-list');
+        balanceContainer.innerHTML = '';
+        console.log("balanceData", balanceData);
+        balanceData.details.forEach(balance => {
+            const currency = balance.ccy;
+            const balanceItem = document.createElement('div');
+            balanceItem.classList.add('balance-item');
+            const iconUrl = getIcon(currency);
+            balanceItem.innerHTML = `
+        <div class="balance-info">
+            <img src="${iconUrl}" alt="${currency}" class="currency-icon">
+            <div class="currency-details">
+                <div class="currency-name">${currency}</div>
+                <div class="currency-usd">≈ ${parseFloat(balance.eqUsd).toFixed(2)} USD</div>
+            </div>
+        </div>
+        <div class="balance-amount">占用 ${parseFloat(balance.frozenBal).toFixed(2)}</div>
+        <div class="balance-amount">可用 ${parseFloat(balance.availBal).toFixed(2)}</div>
+        <div class="balance-amount">${parseFloat(balance.eq).toFixed(2)}</div>
+    `;
+            balanceContainer.appendChild(balanceItem);
+        });
+        filterBalances();
+    }
+
+    async function displayPositions(positionData, coinPrecision) {
+        const positionList = document.getElementById('position-list');
+        positionList.innerHTML = '';
+
+        console.log('positionData', positionData);
+
+
+        positionData.forEach(position => {
+            if (!position.adl) {
+                return
+            }
+            let precision = (position.avgPx.split(".")[1] || position.last.split(".")[1] || position.markPx.split(".")[1] || "00").length
+            if (coinPrecision[position.instId]) {
+                precision = coinPrecision[position.instId].split('.')[1].length;
+            }
+
+            const keyValueOfShow = {
+                '交易品种': "instId.replace('-SWAP','')",
+                '持仓量': 'parseFloat(notionalUsd).toFixed(2)',
+                '保证金': 'parseFloat(margin||imr).toFixed(2)+ " USDT<br>"',
+                '开仓价格': `parseFloat(avgPx).toFixed(${precision})`,
+                '标记价格': 'markPx',
+                '浮动收益': 'parseFloat(upl).toFixed(2)+ " USDT<br>"',
+                '盈亏平衡价': `parseFloat(bePx).toFixed(${precision})`,
+                '预估强平价': `parseFloat(liqPx).toFixed(${precision})`,
+                //avgPx,last,markPx
+            };
+
+            const card = document.createElement('div');
+            card.classList.add('position-card');
+
+            const header = document.createElement('div');
+            header.classList.add('position-header');
+
+            const contractName = document.createElement('span');
+            contractName.classList.add('contract-name');
+            contractName.textContent = position.instId.replace('-SWAP', '');
+
+            const positionMode = document.createElement('span');
+            positionMode.classList.add('position-mode');
+            positionMode.textContent = '';
+
+            const leverage = document.createElement('span');
+            leverage.classList.add(`leverage-${position.posSide}`);
+            leverage.textContent = `${{
+                'long': '多',
+                'short': '空'
+            }[position.posSide]} ${parseFloat(position.lever).toFixed(2)}x`; // 假设杠杆是50x
+
+            header.appendChild(contractName);
+            header.appendChild(positionMode);
+            header.appendChild(leverage);
+            card.appendChild(header);
+
+            // 内容部分
+            const content = document.createElement('div');
+            content.classList.add('position-content');
+
+            // 动态生成每个数据项
+            Object.keys(keyValueOfShow).forEach(label => {
+                const expression = keyValueOfShow[label];
+                let value = genValue(position, expression);
+
+                // 创建数据项
+                const item = document.createElement('div');
+                item.classList.add('position-item');
+
+                const itemLabel = document.createElement('span');
+                itemLabel.classList.add('label');
+                itemLabel.textContent = label;
+
+                const itemValue = document.createElement('span');
+                itemValue.classList.add('value');
+
+                // 动态判断浮动盈亏的颜色
+                if (expression.includes('upl')) {
+                    const isPositive = parseFloat(value) > 0;
+                    value = (isPositive ? '+' : '') + value;
+                    value += `(${isPositive ? '+' : ''}${(100 * parseFloat(position.uplRatio)).toFixed(2)}%)`;
+                    itemValue.classList.add(isPositive ? 'upl-positive' : 'upl-negative');
+                }
+                if (expression.includes('margin')) {
+                    value += {
+                        'cross': '全仓',
+                        'isolated': '逐仓'
+                    }[position.mgnMode];
+                }
+
+                itemValue.innerHTML = value !== 'NaN' ? value : "--";
+
+                item.appendChild(itemLabel);
+                item.appendChild(itemValue);
+                content.appendChild(item);
+            });
+
+            card.appendChild(content);
+            positionList.appendChild(card);
+        });
+
+    }
+
+    coinPrecision = {}
+    //use readonly api!!!
+    //使用只读API!!!
+    const okx = new OKX(atob('base64(apikey)'), atob('base64(secretkey)'), atob('passphrase')).asSimulated(true);
+    const promise = okx.ws.initWebSocket();
+    promise
+        .then((result) => {
+            console.log(result);
+            okx.ws.subscribe({
+                'channel': 'account',
+                'extraParams': '{"updateInterval":"1000"}'
+            }, (data) => {
+                displayBalances(data[0]);
+            });
+            okx.ws.subscribe({
+                'channel': 'positions',
+                'instType': 'ANY',
+                'extraParams': '{"updateInterval":"2000"}'
+            }, (data) => {
+                data.forEach(position => {
+                    let instId = position.instId;
+                    let instType = position.instType;
+                    if (!coinPrecision[instId]) {
+                        okx.rest.public.getInstruments(instType, instId).then(
+                            (result) => {
+                                coinPrecision[instId] = result.data[0]['tickSz'];
+                            }
+                        )
+                    }
+                    displayPositions(data, coinPrecision);
+
+                });
+            });
+            okx.ws.subscribe({
+                'channel': 'instruments',
+                'instType': 'SWAP',
+            })
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    SetSearchBar();
+</script>
+</body>
+</html>
