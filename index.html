@@ -222,21 +222,16 @@
 </div>
 
 <script>
-    class OKX {
-        constructor(apikey, secretkey, passphrase) {
+    class OKX{
+        constructor(apikey, secretkey, passphrase,isSimulated){
             this.apikey = apikey;
             this.secretkey = secretkey;
             this.passphrase = passphrase;
-            this.ws = new OkxWebsocket(this);
-            this.rest = new OkxRest(this);
-        }
-
-        asSimulated(value) {
-            this.simulated = value;
-            return this;
+            this.simulated = isSimulated;
+            this.ws=new OkxWebsocket(this);
+            this.rest=new OkxRest(this);
         }
     }
-
     class OkxRest {
 
         static url = 'https://www.okx.com';
@@ -957,7 +952,7 @@
     coinPrecision = {}
     //use readonly api!!!
     //使用只读API!!!
-    const okx = new OKX(atob('base64(apikey)'), atob('base64(secretkey)'), atob('passphrase')).asSimulated(true);
+    const okx = new OKX(atob('base64(apikey)'), atob('base64(secretkey)'), atob('passphrase'),true);
     const promise = okx.ws.initWebSocket();
     promise
         .then((result) => {
