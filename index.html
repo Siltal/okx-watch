@@ -222,16 +222,17 @@
 </div>
 
 <script>
-    class OKX{
-        constructor(apikey, secretkey, passphrase,isSimulated){
+    class OKX {
+        constructor(apikey, secretkey, passphrase,isSimulated) {
             this.apikey = apikey;
             this.secretkey = secretkey;
             this.passphrase = passphrase;
             this.simulated = isSimulated;
-            this.ws=new OkxWebsocket(this);
-            this.rest=new OkxRest(this);
+            this.ws = new OkxWebsocket(this);
+            this.rest = new OkxRest(this);
         }
     }
+
     class OkxRest {
 
         static url = 'https://www.okx.com';
@@ -744,16 +745,17 @@
             this.channelPath[arg.channel].send(subscribeMessage);
         }
 
-        /**
-         * 维持心跳
-         * */
         startHeartbeatSendTimer() {
             console.log('start heartbeat send timer...');
-
+            // 关键修复：重复启动前先清理旧的 interval
+            if (this.heartbeatSendTimer) {
+                clearInterval(this.heartbeatSendTimer);
+                this.heartbeatSendTimer = null;
+            }
             this.heartbeatSendTimer = setInterval(() => {
-                console.log('heartbeat send, ping...');
-                this.wsPri.send('ping');
-                this.wsPub.send('ping');
+                // 防御：连接可能已关闭
+                try { this.wsPri && this.wsPri.readyState === WebSocket.OPEN && this.wsPri.send('ping'); } catch {}
+                try { this.wsPub && this.wsPub.readyState === WebSocket.OPEN && this.wsPub.send('ping'); } catch {}
                 this.startPongTimer();
             }, this.heartbeatSendInterval);
         }
@@ -762,29 +764,47 @@
          * 服务器无消息超时心跳
          * */
         restartHeartbeatReceiveTimer() {
-            clearTimeout(this.heartbeatReceiveTimer); // 重置定时器
+            if (this.heartbeatReceiveTimer) {
+                clearTimeout(this.heartbeatReceiveTimer);
+                this.heartbeatReceiveTimer = null;
+            }
             this.heartbeatReceiveTimer = setTimeout(() => {
                 console.log('heartbeat receive timeout, ping...');
-                this.wsPri.send('ping');
-                this.wsPub.send('ping');
+                try { this.wsPri && this.wsPri.readyState === WebSocket.OPEN && this.wsPri.send('ping'); } catch {}
+                try { this.wsPub && this.wsPub.readyState === WebSocket.OPEN && this.wsPub.send('ping'); } catch {}
                 this.startPongTimer();
             }, this.heartbeatReceiveInterval);
         }
 
         startPongTimer() {
+            // 关键修复：开启新的前，先清理旧的 timeout，避免堆积
+            if (this.pongTimer) {
+                clearTimeout(this.pongTimer);
+                this.pongTimer = null;
+            }
             this.pongTimer = setTimeout(() => {
                 console.error('pong timeout, reconnect');
-                if (this.wsPub && this.wsPri && this.wsPri.readyState === WebSocket.OPEN) {
-                    this.wsPri.close();
-                    this.wsPub.close();
-                }
+                try {
+                    if (this.wsPri && this.wsPri.readyState === WebSocket.OPEN) this.wsPri.close();
+                    if (this.wsPub && this.wsPub.readyState === WebSocket.OPEN) this.wsPub.close();
+                } catch {}
             }, this.pongTimeout);
         }
 
         clearTimers() {
-            clearTimeout(this.heartbeatSendTimer);
-            clearTimeout(this.heartbeatReceiveTimer);
-            clearTimeout(this.pongTimer);
+            // 关键修复：心跳是 setInterval，必须用 clearInterval
+            if (this.heartbeatSendTimer) {
+                clearInterval(this.heartbeatSendTimer);
+                this.heartbeatSendTimer = null;
+            }
+            if (this.heartbeatReceiveTimer) {
+                clearTimeout(this.heartbeatReceiveTimer);
+                this.heartbeatReceiveTimer = null;
+            }
+            if (this.pongTimer) {
+                clearTimeout(this.pongTimer);
+                this.pongTimer = null;
+            }
         }
     }
 
@@ -832,17 +852,17 @@
             balanceItem.classList.add('balance-item');
             const iconUrl = getIcon(currency);
             balanceItem.innerHTML = `
-        <div class="balance-info">
-            <img src="${iconUrl}" alt="${currency}" class="currency-icon">
-            <div class="currency-details">
-                <div class="currency-name">${currency}</div>
-                <div class="currency-usd">≈ ${parseFloat(balance.eqUsd).toFixed(2)} USD</div>
-            </div>
-        </div>
-        <div class="balance-amount">占用 ${parseFloat(balance.frozenBal).toFixed(2)}</div>
-        <div class="balance-amount">可用 ${parseFloat(balance.availBal).toFixed(2)}</div>
-        <div class="balance-amount">${parseFloat(balance.eq).toFixed(2)}</div>
-    `;
+                <div class="balance-info">
+                    <img src="${iconUrl}" alt="${currency}" class="currency-icon">
+                    <div class="currency-details">
+                        <div class="currency-name">${currency}</div>
+                        <div class="currency-usd">≈ ${parseFloat(balance.eqUsd).toFixed(2)} USD</div>
+                    </div>
+                </div>
+                <div class="balance-amount">占用 ${parseFloat(balance.frozenBal).toFixed(2)}</div>
+                <div class="balance-amount">可用 ${parseFloat(balance.availBal).toFixed(2)}</div>
+                <div class="balance-amount">${parseFloat(balance.eq).toFixed(2)}</div>
+            `;
             balanceContainer.appendChild(balanceItem);
         });
         filterBalances();
@@ -950,9 +970,11 @@
     }
 
     coinPrecision = {}
+    const coinPrecisionPending = new Set();
+
     //use readonly api!!!
     //使用只读API!!!
-    const okx = new OKX(atob('base64(apikey)'), atob('base64(secretkey)'), atob('passphrase'),true);
+    const okx=new OKX(atob(''),atob(''),atob(''),false);
     const promise = okx.ws.initWebSocket();
     promise
         .then((result) => {
@@ -964,23 +986,29 @@
                 displayBalances(data[0]);
             });
             okx.ws.subscribe({
-                'channel': 'positions',
-                'instType': 'ANY',
-                'extraParams': '{"updateInterval":"2000"}'
+                channel: 'positions',
+                instType: 'ANY',
+                extraParams: '{"updateInterval":"2000"}'
             }, (data) => {
                 data.forEach(position => {
-                    let instId = position.instId;
-                    let instType = position.instType;
-                    if (!coinPrecision[instId]) {
-                        okx.rest.public.getInstruments(instType, instId).then(
-                            (result) => {
-                                coinPrecision[instId] = result.data[0]['tickSz'];
-                            }
-                        )
-                    }
-                    displayPositions(data, coinPrecision);
+                    const instId = position.instId;
+                    const instType = position.instType;
 
+                    if (!coinPrecision[instId] && !coinPrecisionPending.has(instId)) {
+                        coinPrecisionPending.add(instId);
+                        okx.rest.public.getInstruments(instType, instId)
+                            .then((result) => {
+                                coinPrecision[instId] = result.data?.[0]?.tickSz || '0.01';
+                            })
+                            .catch((err) => {
+                                console.error('getInstruments failed for', instId, err);
+                            })
+                            .finally(() => {
+                                coinPrecisionPending.delete(instId);
+                            });
+                    }
                 });
+                displayPositions(data, coinPrecision);
             });
             okx.ws.subscribe({
                 'channel': 'instruments',
